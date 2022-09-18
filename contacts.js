@@ -17,10 +17,10 @@ const contactsPath = path.join(__dirname, "db", "contacts.json")
 
        try {
         const contacts = await listContacts();
-        const result = contacts.find((item) => item.id === contactId)
+        const reply = contacts.find((item) => item.id === contactId)
 
 
-        return result
+        return reply
        } catch (error) {
         throw error;
        };
@@ -33,8 +33,8 @@ const contactsPath = path.join(__dirname, "db", "contacts.json")
         const contacts = await listContacts();
         const newContacts = contacts.filter((item) => item.id !==contactId || Number(item.id) !== Number(contactId) );
 
-        const result = JSON.stringify(newContacts);
-        await fs.writeFile(contactsPath, result);
+        const reply = JSON.stringify(newContacts);
+        await fs.writeFile(contactsPath, reply);
         return newContacts;
 
       } catch (error){
@@ -55,8 +55,8 @@ const contactsPath = path.join(__dirname, "db", "contacts.json")
         const lastId = contacts[length - 1].id;
         newContact.id = String( Number(lastId) + 1);
         const newContacts = [...contacts, newContact];
-        const result = JSON.stringify(newContacts);
-        await fs.writeFile(contactsPath, result);
+        const reply = JSON.stringify(newContacts);
+        await fs.writeFile(contactsPath, reply);
         return newContact
 
       } catch (error) {
